@@ -1,0 +1,21 @@
+ # Fichier pour les secrets
+.env
+
+# Fichiers de cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Dossiers d'IDE
+.vscode/
+.idea/
+
+# Fichiers système
+.DS_Store
+
+# Dossier de données et de cache de Open WebUI (LA LIGNE IMPORTANTE)
+data/
+# Ignorer le dossier de travail et de données de Open WebUI
+open_webui/
+open-webui-data/

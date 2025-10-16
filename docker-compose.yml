@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - "8082:8080" # Vous pouvez changer 8080 par un autre port si besoin, ex: 3000:8080
+    volumes:
+      # On lie le sous-dossier ./data au dossier de données du conteneur
+      - open-webui-data:/app/backend/data
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - pipelines
+      - rag_app
+
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main
+    container_name: pipelines
+    volumes:
+      # On lie le sous-dossier ./pipelines au dossier des pipelines du conteneur
+      - ./pipelines:/app/pipelines
+    restart: always
+    environment:
+      # Ceci est la clé d'API par défaut pour connecter WebUI à Pipelines
+      - PIPELINES_API_KEY=0p3n-w3bu!
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - rag_app
+      #- lightrag_server
+
+  # ---- NOUVEAU SERVICE ----
+  rag_app:
+    # On dit à Docker de construire ce service à partir du Dockerfile local
+    build: ./rag_app
+    container_name: rag_server_v1
+    ports:
+      - "5002:6000" # On garde le port pour les tests Giskard
+    restart: always
+    volumes:
+      # Monte le dossier des documents pour que le conteneur y ait accès.
+      - ./data/knowledge_base:/app/data/knowledge_base
+      
+    env_file:
+      # Charge les variables (clés API, modèles) depuis le fichier .env à la racine.
+      - .env
+
+  #---- NOTRE NOUVEAU SERVICE LIGHTRAG ----
+  #lightrag_server:
+   # build: ./lightrag_server
+   # container_name: lightrag_server
+   # ports: # <-- AJOUTEZ CES LIGNES
+     # - "5002:5000"
+   # restart: always
+   # environment:
+    #  - OPENAI_API_KEY=${OPENAI_API_KEY}
+volumes:
+  open-webui-data:
+  
+
+
+
+  

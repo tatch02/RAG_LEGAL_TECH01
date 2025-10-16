@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shauri - IA & Transformation Digitale</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      background: #f9fafb;
+    }
+    a { text-decoration: none; }
+    h1, h2, h3 { font-weight: 700; }
+    h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+
+    /* HERO */
+    header {
+      background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,41,59,0.85)),
+                  url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+    header h1 { font-size: 3rem; margin-bottom: 20px; }
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 40px;
+      color: #e2e8f0;
+    }
+    .btn-primary {
+      background: #f97316;
+      padding: 14px 30px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .btn-primary:hover { background: #ea580c; }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { color: #f97316; margin-bottom: 10px; }
+
+    /* IMAGE SECTIONS */
+    .with-image {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .with-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    @media(max-width: 900px) {
+      .with-image { grid-template-columns: 1fr; }
+    }
+
+    /* BLOCKQUOTE */
+    blockquote {
+      background: #e2e8f0;
+      padding: 25px;
+      border-left: 6px solid #f97316;
+      border-radius: 12px;
+      font-style: italic;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+
+    /* ABOUT */
+    .about {
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
+    }
+    .about img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #f97316;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    footer h2 { color: white; margin-bottom: 20px; }
+    footer a { color: #f97316; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <h1>Naviguez dans l’ère de l’IA en toute confiance</h1>
+    <p>Shauri accompagne ONG et entreprises à comprendre, intégrer et tirer parti de l’intelligence artificielle grâce à des ateliers, des formations pratiques et des solutions sur mesure.</p>
+    <a href="#contact" class="btn-primary">🚀 Réservez votre consultation gratuite</a>
+  </header>
+
+  <!-- DEFIS -->
+  <section class="with-image">
+    <div>
+      <h2>Vos défis dans un monde en pleine mutation</h2>
+      <p>Avancées rapides, opportunités manquées, perte de compétitivité : ne laissez pas votre organisation être dépassée par la révolution de l’IA.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=1600&q=80" alt="Défis numériques">
+  </section>
+
+  <!-- SOLUTION -->
+  <section class="with-image">
+    <img src="https://images.unsplash.com/photo-1559027615-f6b0ddef2c3d?auto=format&fit=crop&w=1600&q=80" alt="Solutions IA">
+    <div>
+      <h2>Shauri : Votre partenaire IA</h2>
+      <p>Nous vous accompagnons avec une approche progressive et humaine :</p>
+      <ul>
+        <li>🎓 Ateliers de sensibilisation</li>
+        <li>🛠 Formations pratiques</li>
+        <li>⚙️ Solutions digitales sur mesure</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CAS CONCRETS -->
+  <section>
+    <h2>Des réussites concrètes</h2>
+    <div class="columns">
+      <div class="card"><h3>🤖 Chatbot OFAC</h3><p>Accès simplifié aux données forestières et aires protégées en Afrique centrale.</p></div>
+      <div class="card"><h3>📊 Suivi & Évaluation</h3><p>Automatisation de la collecte et analyse des données projets.</p></div>
+      <div class="card"><h3>👥 Plateforme collaborative</h3><p>Outils avancés pour une meilleure coordination d’équipes.</p></div>
+      <div class="card"><h3>🎯 Fresque de l’IA</h3><p>Démystification de l’IA pour ONG avec applications concrètes.</p></div>
+    </div>
+  </section>
+
+  <!-- TEMOIGNAGES -->
+  <section>
+    <h2>Ils nous ont fait confiance</h2>
+    <blockquote>
+      “Grâce à l'atelier Fresque de l’IA, nous avons identifié des applications stratégiques. Cela a été un véritable catalyseur.”  
+      <br>– Sophie Martin, ONG Horizon
+    </blockquote>
+    <blockquote>
+      “L’accompagnement personnalisé de Shauri a transformé notre approche digitale. Leur expertise a fait toute la différence.”  
+      <br>– Jean Kouassi, AfriqueTech
+    </blockquote>
+  </section>
+
+  <!-- A PROPOS -->
+  <section>
+    <h2>À propos de Guillaume</h2>
+    <div class="about">
+      <img src="https://images.unsplash.com/photo-1603415526960-f7e0328a6e48?auto=format&fit=crop&w=400&q=80" alt="Guillaume">
+      <p>Ingénieur et consultant en innovation digitale avec plus de 20 ans d’expérience en Afrique, Guillaume allie expertise technologique et approche humaine pour accompagner ONG et entreprises dans leur transition vers l’IA.</p>
+      <p><a href="#">👉 Voir son profil LinkedIn</a></p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <h2>Prêt à transformer vos idées en actions ?</h2>
+    <p>Email : <a href="mailto:contact@shauri.com">contact@shauri.com</a></p>
+    <p><a href="#">Réservez votre consultation (Doodle)</a></p>
+    <p><a href="#">Shauri sur LinkedIn</a></p>
+  </footer>
+
+</body>
+</html>
