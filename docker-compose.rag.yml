@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # 1. Votre serveur RAG
+  # Nous le nommons 'rag_server_v1' car votre pipeline l'appelle par ce nom
+  rag_server_v1:
+    build: ./rag_app
+    container_name: rag_server_v1
+    restart: always
+    volumes:
+      # Lie le dossier de la base de connaissances
+      - ./data/knowledge_base:/app/data/knowledge_base
+    env_file:
+      # Charge vos clés API depuis le .env
+      - .env
+    networks:
+      # Se connecte au réseau existant de Traefik (vu dans votre rapport)
+      - traefik_proxy
+    expose:
+      # Expose le port 6000 uniquement au réseau interne (pour 'pipelines')
+      - "6000"
+
+  # 2. Le service Pipelines d'Open WebUI
+  pipelines:
+    image: ghcr.io/open-webui/pipelines:main
+    container_name: pipelines
+    restart: always
+    volumes:
+      # Monte votre script de pipeline V1 pour qu'il soit découvert
+      - ./pipelines:/app/pipelines
+    environment:
+      # Clé API par défaut pour la connexion WebUI <-> Pipelines
+      - PIPELINES_API_KEY=0p3n-w3bu!
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - rag_server_v1 # S'assure que le RAG démarre en premier
+    networks:
+      # Se connecte au même réseau pour parler à WebUI et rag_server_v1
+      - traefik_proxy
+
+networks:
+  # Point crucial : déclare le réseau comme "externe".
+  # Docker ne tentera pas de le créer, mais s'y attachera.
+  traefik_proxy:
+    external: true
