@@ -28,3 +28,10 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
 DOCS_FOLDER = "/app/data/knowledge_base"
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", 1000))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", 200))
+# --- Configuration RAG-Fusion (V2) ---
+RAG_FUSION_TEMPLATE = """Vous êtes un assistant IA serviable. Votre tâche est de générer quatre
+requêtes de recherche différentes basées sur une seule requête d'entrée.
+
+Générez plusieurs requêtes de recherche liées à : {question}
+
+Sortie (4 requêtes, séparées par des sauts de ligne) :"""
